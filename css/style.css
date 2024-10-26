@@ -76,9 +76,14 @@
     justify-content: center;
     font-weight: normal;
 }
-
-
 /*** ===============================================Navbar============================================================ ***/
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the edges */
+    align-items: center; /* Centers items vertically */
+    padding: 0 15px; /* Add horizontal padding */
+}
+
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
@@ -86,6 +91,10 @@
     font-weight: 900;
     vertical-align: middle;
     margin-left: 8px;
+}
+
+.navbar .navbar-nav {
+    display: flex; /* Ensure navbar items are in a row */
 }
 
 .navbar .navbar-nav .nav-link {
@@ -104,19 +113,31 @@
 }
 
 @media (max-width: 991.98px) {
-    .navbar .navbar-nav .nav-link  {
-        margin-right: 0;
-        padding: 10px 0;
+    .navbar .navbar-nav .nav-link {
+        margin-right: 0; /* Remove margin on smaller screens */
+        padding: 10px 0; /* Adjust padding */
     }
 
     .navbar .navbar-nav {
-        border-top: 1px solid #EEEEEE;
+        border-top: 1px solid #EEEEEE; /* Add top border for mobile */
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the start */
+        width: 100%; /* Full width */
+    }
+
+    .navbar .btn {
+        width: 100%; /* Full width button */
+        text-align: center; /* Center align text in button */
+        margin-top: 10px; /* Add some spacing above the button */
     }
 }
 
-.navbar .navbar-brand,
+.navbar .navbar-brand {
+    height: 75px; /* Keep brand height consistent */
+}
+
 .navbar a.btn {
-    height: 75px;
+    height: 75px; /* Keep button height consistent */
 }
 
 .navbar .navbar-nav .nav-link {
@@ -372,6 +393,22 @@
     border-bottom-color: var(--primary);
 }
 
+/* Ensure no overflow in contact info boxes */
+.bg-light {
+    padding: 15px; /* Adjust padding for smaller screens */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .bg-light {
+        padding: 10px; /* Further reduce padding on small screens */
+    }
+
+    .bg-light h5,
+    .bg-light p {
+        font-size: 12px; /* Adjust font size for better fit */
+    }
+}
 
 /*** ==========================Testimonial =======================================***/
 .testimonial-carousel::before {
@@ -547,7 +584,21 @@
     }
 }
 
-  
+  /* ==========home pade description============== */
+  .skill-text-container {
+    font-size: 2rem; /* Adjust size as needed */
+    font-weight: bold; /* Make it bold */
+    line-height: 1.2; /* Adjust line height if needed */
+    color: #333; /* Change to your desired color */
+    text-align: center; /* Center alignment */
+}
+
+.skill-text a {
+    color: #007bff; /* Change link color if needed */
+    text-decoration: none; /* Remove underline from links */
+}
+
+  /* end here */
 /*=================================================================================
                       SKILLS
 ===================================================================================*/
