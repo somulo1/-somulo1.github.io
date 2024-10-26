@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const validationResults = validateForm(form);
             if (validationResults.isValid) {
                 // Show success message
-                alert('Message has been sent successfully! Feedback will be given soon.'); 
+                alert('Message has been sent successfully! Feedback will be given soon.');
                 form.reset(); // Reset form fields
             } else {
                 displayErrors(form, validationResults.errors);
@@ -115,5 +115,25 @@ document.addEventListener('DOMContentLoaded', function () {
     function containsBotScripts(input) {
         const botScripts = /<script.*?>.*?<\/script>|<\/?[^>]+/i; 
         return botScripts.test(input);
+    }
+
+    // Handle newsletter signup
+    const newsletterInput = document.querySelector('.newsletter-input');
+    const newsletterButton = document.querySelector('.newsletter-button');
+    
+    if (newsletterButton) {
+        newsletterButton.addEventListener('click', function () {
+            handleNewsletterSignup(newsletterInput);
+        });
+    }
+
+    function handleNewsletterSignup(input) {
+        const email = input.value.trim();
+        if (validateEmail(email)) {
+            alert('Thank you for signing up for our newsletter!'); 
+            input.value = ''; // Clear input field
+        } else {
+            alert('Please enter a valid email address.');
+        }
     }
 });
