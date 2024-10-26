@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const validationResults = validateForm(form);
             if (validationResults.isValid) {
-                alert('Form submitted successfully!');
+                // Show success message
+                alert('Message has been sent successfully! Feedback will be given soon.'); 
                 form.reset(); // Reset form fields
             } else {
                 displayErrors(form, validationResults.errors);
@@ -35,10 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const fields = [
             { id: 'name', message: 'Name is required!', minLength: 1 },
-            { id: 'email', message: 'Email is required !', minLength: 1 },
-            { id: 'subject', message: 'Subject is required !', minLength: 1 },
+            { id: 'email', message: 'Email is required!', minLength: 1 },
+            { id: 'subject', message: 'Subject is required!', minLength: 1 },
             { id: 'message', message: 'Message cannot be empty!', minLength: 10 },
-            { id: 'Your Mobile', message: 'Provide Mobile number!', minLength: 1 }
+            { id: 'mobile', message: 'Provide Mobile number!', minLength: 1 }
         ];
 
         fields.forEach(field => {
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (field.id === 'email' && !validateEmail(value)) {
                 errors.push({ field: field.id, message: 'Please enter a valid email address.' });
                 isValid = false;
-            } else if (field.id === 'Your Mobile' && !validateMobile(value)) {
+            } else if (field.id === 'mobile' && !validateMobile(value)) {
                 errors.push({ field: field.id, message: 'Please enter a valid mobile number.' });
                 isValid = false;
             }
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 displayError(input, 'Message must be at least 10 characters long.');
             } else if (fieldId === 'email' && !validateEmail(value)) {
                 displayError(input, 'Please enter a valid email address.');
-            } else if (fieldId === 'Your Mobile' && !validateMobile(value)) {
+            } else if (fieldId === 'mobile' && !validateMobile(value)) {
                 displayError(input, 'Please enter a valid mobile number.');
             }
         }
@@ -96,23 +97,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function displayErrors(form, errors) {
         errors.forEach(error => {
-            const inputField = form.querySelector(`#${error.field}`) || form.querySelector(`input[placeholder='${error.field}']`);
+            const inputField = form.querySelector(`#${error.field}`);
             displayError(inputField, error.message);
         });
     }
 
     function validateEmail(email) {
-        const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // More comprehensive can be applied
+        const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
         return re.test(String(email).toLowerCase());
     }
 
     function validateMobile(mobile) {
-        const re = /^\+?[0-9\s()-]{7,15}$/; // More flexible regex for international formats
+        const re = /^\+?[0-9\s()-]{7,15}$/; 
         return re.test(String(mobile));
     }
 
     function containsBotScripts(input) {
-        const botScripts = /<script.*?>.*?<\/script>|<\/?[^>]+/i; // Basic regex to catch scripts or HTML tags
+        const botScripts = /<script.*?>.*?<\/script>|<\/?[^>]+/i; 
         return botScripts.test(input);
     }
 });
