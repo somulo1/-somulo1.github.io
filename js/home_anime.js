@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "Software Developer.",
         "Digital Forensics Analyst.",
         "Cybersecurity Enthusiast.",
-        "Currently at <a href='https://www.zone01kisumu.ke/' class='text-link'><b>Zone01 Kisumu</b></a>.",
+        "Currently at Zone01 Kisumu</a>.",
         "And more...",
     ];
 
