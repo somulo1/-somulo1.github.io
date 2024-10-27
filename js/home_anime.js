@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const skills = [
-        "A Software Developer.",
-        "A Digital Forensics Analyst.",
-        "An Expert in AI.",
-        "A Network Security Expert.",
-        "A Cybersecurity Enthusiast.",
-        "I work at <a href='https://www.zone01kisumu.ke/' class='text-link'><b>Zone01 Kisumu</b></a>.",
-        "and much more..."
+        "Software Developer.",
+        "Digital Forensics Analyst.",
+        "Cybersecurity Enthusiast.",
+        "Currently at <a href='https://www.zone01kisumu.ke/' class='text-link'><b>Zone01 Kisumu</b></a>.",
+        "And more...",
     ];
 
     const skillTextElement = document.querySelector('.skill-text');
