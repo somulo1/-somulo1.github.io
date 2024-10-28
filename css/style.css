@@ -1166,3 +1166,47 @@ h2 {
         left: -14%;
     }
 }
+/* ====================pop ups====================== */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background */
+    justify-content: center; /* Center the modal */
+    align-items: center; /* Center the modal */
+}
+
+.popup-content {
+    background-color: #333; /* Dark background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 300px; /* Set a reasonable width */
+    text-align: center;
+    position: relative;
+    color: rgba(228, 214, 18, 0.9); /* Brighter yellow */
+    font-weight: bold;
+}
+
+.close-button {
+    color: rgba(228, 214, 18, 0.9); /* Bright color for visibility */
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #FFD700; /* Slightly brighter on hover */
+}
+
+p {
+    margin: 0; /* No margin for cleaner look */
+    font-size: 16px; /* Slightly larger font */
+    line-height: 1.4; /* Better line spacing */
+}
