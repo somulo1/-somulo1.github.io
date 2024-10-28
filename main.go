@@ -12,8 +12,8 @@ var db *sql.DB
 
 func init() {
 	var err error
-	// Connect to the MySQL database on Railway
-	db, err = sql.Open("mysql", "root:rACqzDqWmThPGXqqGGzagNVtmVIFjLCX@tcp(junction.proxy.rlwy.net:23655)/railway")
+	// Connect to the MySQL database on Railway using the new connection details
+	db, err = sql.Open("mysql", "root:YOUR_PASSWORD@tcp(junction.proxy.rlwy.net:21741)/railway")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -25,15 +25,11 @@ func main() {
 	// Handle form submission
 	http.HandleFunc("/submit", handleSubmit)
 
-	// Serve portfolio files and subdirectories from the portfolio directory
+	// Serve other files and directories
 	http.Handle("/portfolio/", http.StripPrefix("/portfolio/", http.FileServer(http.Dir("./portfolio"))))
-	// Serve CSS files from the css directory
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./css"))))
-	// Serve JavaScript files from the js directory
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./js"))))
-	// Serve images from the img directory, including subdirectories
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("./img"))))
-	// Serve libraries from the lib directory, including subdirectories
 	http.Handle("/lib/", http.StripPrefix("/lib/", http.FileServer(http.Dir("./lib"))))
 
 	// Start the server on port 8090
