@@ -228,11 +228,35 @@
             <div class="col-lg-3 col-md-6">
                 <h5 class="text-light mb-4">Newsletter</h5>
                 <p>Please sign up for my service updates</p>
-                <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                <div id="mc_embed_signup">
+                    <form action="https://github.us14.list-manage.com/subscribe/post?u=21539532d5e42375bdff4cde9&amp;id=9006cd76d9&amp;v_id=4666&amp;f_id=0052b8e5f0" method="post" id="mc-embedded-subscribe-form" class="validate" target="_blank" required>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                            <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="email" name="EMAIL" placeholder="Your email" required>
+                            <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Sign Up</button>
+                        </div>
+                        <div id="mce-responses" class="clear foot">
+                            <div class="response" id="mce-error-response" style="display: none;"></div>
+                            <div class="response" id="mce-success-response" style="display: none;">
+                                <p style="color: rgba(228, 214, 18, 0.667); font-weight: bold;">Almost finished... We need to confirm your email address. To complete the subscription process, please click the link in the email we just sent you.</p>
+                            </div>
+                        </div>
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_21539532d5e42375bdff4cde9_9006cd76d9" tabindex="-1" value="">
+                        </div>
+                    </form>
                 </div>
             </div>
+            
+            <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+            <script type="text/javascript">
+                (function($) {
+                    window.fnames = new Array(); 
+                    window.ftypes = new Array();
+                    fnames[0]='EMAIL'; ftypes[0]='email';
+                }(jQuery));
+                var $mcj = jQuery.noConflict(true);
+            </script>
+            
         </div>
     </div>
     <div class="container">
@@ -250,7 +274,6 @@
     </div>
 </div>
 <!-- Footer End -->
-
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>

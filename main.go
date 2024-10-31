@@ -35,21 +35,11 @@ func main() {
 func RouteChecker(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if _, ok := allowedRoutes[r.URL.Path]; !ok {
-			// fmt.Println("Not fount here")
 			http.Error(w, "Not found", http.StatusNotFound)
 			return
 		}
 		next.ServeHTTP(w, r)
 	})
-}
-
-func AboutHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodGet {
-		templatePath := "/about.html" // Serve the main index.html file
-		serveTemplate(w, templatePath)
-	} else {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-	}
 }
 
 func RegisterRoutes(mux *http.ServeMux) {
@@ -61,7 +51,6 @@ func RegisterRoutes(mux *http.ServeMux) {
 
 	// Serve HTML files directly from the home directory
 	mux.HandleFunc("/", HomeHandler)
-	mux.HandleFunc("/about", AboutHandler)
 	mux.HandleFunc("/send-email", handleEmailSend)
 }
 
