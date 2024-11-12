@@ -171,7 +171,7 @@ func handleEmailSend(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Validate Message Length (1-500 characters)
-	messageRegex := `^.{1,500}$`
+	messageRegex := `^[a-zA-Z0-9\s]+$`
 	if !regexp.MustCompile(messageRegex).MatchString(message) {
 		http.Error(w, "Invalid message", http.StatusBadRequest)
 		return
@@ -195,7 +195,7 @@ func handleEmailSend(w http.ResponseWriter, r *http.Request) {
 	emailBody := fmt.Sprintf(`
 	<html>
 	<head>
-		<title>New Message From Portfolio</title>
+		<title>Someone has contucted you from your portfolio</title>
 		<style>
 			body {
 				font-family: Arial, sans-serif;
