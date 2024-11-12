@@ -291,11 +291,14 @@ func handleEmailSend(w http.ResponseWriter, r *http.Request) {
                 <li><strong>Message:</strong> %s</li>
             </ul>
             <button class="back-button custom-back-button" onclick="javascript:history.back()">Go Back</button>
+			<div class="footer">
+			<p align="center" >&copy; 2024 samuel omulo. All rights reserved.</p>
+	</div>
         </div>
+		
     </body>
-	<div class="footer">
-				<p>&copy; 2024 samuel okoth omulo. All rights reserved.</p>
-			</div>
+	
+
 </html>
 	`, name, name, email, subject, message)
 }
@@ -438,8 +441,8 @@ func handleAppointment(w http.ResponseWriter, r *http.Request) {
 				<p><strong>Description:</strong><br>%s</p>
 			</div>
 			<div class="footer">
-				<p>&copy; 2024 Your Company Name. All rights reserved.</p>
-			</div>
+			    <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+		</div>
 		</div>
 	</body>
 	</html>
@@ -481,6 +484,10 @@ func handleAppointment(w http.ResponseWriter, r *http.Request) {
                 <li><strong>Message:</strong> %s</li>
             </ul>
             <button class="back-button custom-back-button" onclick="javascript:history.back()">Go Back</button>
+			<div class="footer">
+			<p align="center" >&copy; 2024 samuel omulo. All rights reserved.</p>
+		</div>
+        </div>
         </div>
     </body>
 </html>
