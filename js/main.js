@@ -89,7 +89,7 @@
     // Disable right-click on the page
     document.addEventListener('contextmenu', function (e) {
         e.preventDefault();
-        alert('Right-click is disabled on this page.');
+        alert('');
     });
 
     // Prevent dragging on the entire page
