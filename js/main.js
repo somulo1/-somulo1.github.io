@@ -1,4 +1,3 @@
- 
 (function ($) {
     "use strict";
 
@@ -11,11 +10,9 @@
         }, 1);
     };
     spinner();
-    
-    
+
     // Initiate the wowjs
     new WOW().init();
-
 
     // Sticky Navbar
     $(window).scroll(function () {
@@ -25,8 +22,7 @@
             $('.sticky-top').removeClass('shadow-sm').css('top', '-100px');
         }
     });
-    
-    
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -40,13 +36,11 @@
         return false;
     });
 
-
     // Facts counter
     $('[data-toggle="counter-up"]').counterUp({
         delay: 10,
         time: 2000
     });
-
 
     // Date and time picker
     $('.date').datetimepicker({
@@ -56,7 +50,6 @@
         format: 'LT'
     });
 
-
     // Header carousel
     $(".header-carousel").owlCarousel({
         autoplay: false,
@@ -64,13 +57,12 @@
         items: 1,
         dots: true,
         loop: true,
-        nav : true,
-        navText : [
+        nav: true,
+        navText: [
             '<i class="bi bi-chevron-left"></i>',
             '<i class="bi bi-chevron-right"></i>'
         ]
     });
-
 
     // Blogs and Testimonials carousel
     $(".testimonial-carousel").owlCarousel({
@@ -79,21 +71,52 @@
         center: true,
         dots: false,
         loop: true,
-        nav : true,
-        navText : [
+        nav: true,
+        navText: [
             '<i class="bi bi-arrow-left"></i>',
             '<i class="bi bi-arrow-right"></i>'
         ],
         responsive: {
-            0:{
-                items:1
+            0: {
+                items: 1
             },
-            768:{
-                items:2
+            768: {
+                items: 2
             }
         }
     });
 
-    
-})(jQuery);
+    // Disable right-click on the page
+    document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        alert('Right-click is disabled on this page.');
+    });
 
+    // Prevent dragging on the entire page
+    document.addEventListener('dragstart', function (e) {
+        e.preventDefault();
+    });
+
+    // Prevent text selection on the entire page
+    document.addEventListener('selectstart', function (e) {
+        e.preventDefault();
+    });
+
+    // Clickjacking protection: prevent embedding in iframes
+    if (window.top !== window.self) {
+        window.top.location = window.self.location;
+    }
+
+    // Disable key combinations often used for web inspection tools
+    document.addEventListener('keydown', function (e) {
+        if (
+            e.key === 'F12' || 
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+            (e.ctrlKey && e.key === 'U')
+        ) {
+            e.preventDefault();
+            alert('Inspect tools have been disabled.');
+        }
+    });
+
+})(jQuery);

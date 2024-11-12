@@ -509,7 +509,7 @@
     padding: 20px; /* Adjust padding as needed */
     background-color: #333; /* Example background color */
     color: #fff; /* Text color */
-    text-align: left; /* Center align text */
+    text-align: center; /* Center align text */
     width: 100%; /* Full width */
     position: relative; /* Allow it to adjust to content */
 }
@@ -948,9 +948,11 @@ h2 {
 /*================================================================================
                       AWARD
 ==================================================================================*/
- 
+
+
 #awards {
     background: #ffffff;
+    
 }
 
 #award-box {
@@ -1018,7 +1020,25 @@ h2 {
     z-index: 1;
     transform: rotate(45deg);
 }
-
+/* Styling for the button */
+#award-box .custom-button {
+    background-color: #1B2C51; /* Button background color */
+    color: #fff; /* Button text color */
+    border: 1px solid #39b3ff; /* Button border color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+/* Styling for the award content border */
+/* Styling for the award-content */
+.award-content {
+    border: 2px solid #39b3ff; /* Adds a border with color */
+    border-radius: 5px; /* Optional: adds rounded corners */
+    padding: 20px; /* Optional: space inside the border */
+    background-color: #c05252; /* Background color for the content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+}
 #award-box .award-icon:before {
     content: "";
     display: block;
@@ -1104,6 +1124,7 @@ h2 {
 
 #award-box .award:hover .title {
     color: #39b3ff;
+    
 }
 
 #award-box .description {
@@ -1111,6 +1132,7 @@ h2 {
     color: #777;
     line-height: 28px;
     margin-top: 8px;
+    border-color: #ffca39;
     
 }
 
@@ -1136,13 +1158,14 @@ h2 {
 @media only screen and (max-width: 767px) {
     #award-box {
         padding-left: 20px;
-        
+        border-color: #007bff;
     }
     #award-box:before {
         left: 20px;
     }
     #award-box .award {
         width: 100%;
+        
     }
     #award-box .award,
     #award-box .award-content {
@@ -1161,6 +1184,7 @@ h2 {
     }
     #award-box .award-content:before {
         left: -7.3px;
+        
     }
     #award-box .award-content:after {
         left: -14%;

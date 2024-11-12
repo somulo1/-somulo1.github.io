@@ -31,5 +31,36 @@
     $('body').scrollspy({
       target: '#sideNav'
     });
-  
+    
+   // Disable right-click
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+    
+    // Disable keyboard shortcuts for inspect tools and copying (e.g., Ctrl+Shift+I, Ctrl+C, Ctrl+U, F12)
+    document.addEventListener('keydown', function (e) {
+      // List of key combinations to prevent
+      if (
+          e.ctrlKey && (e.key === 'u' || e.key === 'c' || e.key === 'v' || e.key === 's' || e.key === 'p' || e.key === 'a') || // Ctrl + U/C/V/S/P/A
+          (e.ctrlKey && e.shiftKey && (e.key === 'i' || e.key === 'j')) || // Ctrl + Shift + I/J
+          (e.key === 'F12') // F12 for DevTools
+      ) {
+          e.preventDefault();
+      }
+    });
+    
+    // Prevent text selection and copying
+    document.addEventListener('selectstart', function (e) {
+      e.preventDefault();
+    });
+    
+    document.addEventListener('copy', function (e) {
+      e.preventDefault();
+    });
+    
+    // Disable dragging images or other elements
+    document.addEventListener('dragstart', function (e) {
+      e.preventDefault();
+    });
+    
   })(jQuery); // End of use strict

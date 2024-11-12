@@ -248,7 +248,7 @@ func handleEmailSend(w http.ResponseWriter, r *http.Request) {
 				<p><strong>Message:</strong><br>%s</p>
 			</div>
 			<div class="footer">
-				<p>&copy; 2024 Your Company Name. All rights reserved.</p>
+				<p>&copy; 2024 somuloportfolio. All rights reserved.</p>
 			</div>
 		</div>
 	</body>
@@ -293,6 +293,9 @@ func handleEmailSend(w http.ResponseWriter, r *http.Request) {
             <button class="back-button custom-back-button" onclick="javascript:history.back()">Go Back</button>
         </div>
     </body>
+	<div class="footer">
+				<p>&copy; 2024 samuel okoth omulo. All rights reserved.</p>
+			</div>
 </html>
 	`, name, name, email, subject, message)
 }
