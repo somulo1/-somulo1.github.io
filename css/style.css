@@ -509,7 +509,7 @@
     padding: 20px; /* Adjust padding as needed */
     background-color: #333; /* Example background color */
     color: #fff; /* Text color */
-    text-align: center; /* Center align text */
+    text-align: left; /* Center align text */
     width: 100%; /* Full width */
     position: relative; /* Allow it to adjust to content */
 }
@@ -1167,3 +1167,10 @@ h2 {
     }
 }
 /* ====================pop ups====================== */
+.fab fa-twitter{
+	font-family:sans-serif;
+}
+.fa.fa-twitter::before{
+	content:"𝕏";
+	font-size:1.2em;
+}

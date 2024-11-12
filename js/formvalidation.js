@@ -1,139 +1,108 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const forms = document.querySelectorAll('form');
 
-    forms.forEach(form => {
-        form.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent form submission
-            resetErrorMessages(form);
-
-            const validationResults = validateForm(form);
-            if (validationResults.isValid) {
-                // Show success message
-                alert('Message has been sent successfully! Feedback will be given soon.');
-                form.reset(); // Reset form fields
-            } else {
-                displayErrors(form, validationResults.errors);
-            }
-        });
-
-        // Real-time validation
-        form.addEventListener('input', function (event) {
-            const target = event.target;
-            if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
-                validateField(target);
-            }
-        });
-    });
-
-    function resetErrorMessages(form) {
-        const errorMessages = form.querySelectorAll('.error-message');
-        errorMessages.forEach(msg => msg.remove());
-    }
-
-    function validateForm(form) {
-        const errors = [];
-        let isValid = true;
-
-        const fields = [
-            { id: 'name', message: 'Name is required!', minLength: 1 },
-            { id: 'email', message: 'Email is required!', minLength: 1 },
-            { id: 'subject', message: 'Subject is required!', minLength: 1 },
-            { id: 'message', message: 'Message cannot be empty!', minLength: 10 },
-            { id: 'mobile', message: 'Provide Mobile number!', minLength: 1 }
-        ];
-
-        fields.forEach(field => {
-            const value = form.querySelector(`#${field.id}`)?.value.trim();
-            if (!value || containsBotScripts(value)) {
-                errors.push({ field: field.id, message: field.message });
-                isValid = false;
-            } else if (field.id === 'message' && value.length < 10) {
-                errors.push({ field: field.id, message: 'Message must be at least 10 characters long.' });
-                isValid = false;
-            } else if (field.id === 'email' && !validateEmail(value)) {
-                errors.push({ field: field.id, message: 'Please enter a valid email address.' });
-                isValid = false;
-            } else if (field.id === 'mobile' && !validateMobile(value)) {
-                errors.push({ field: field.id, message: 'Please enter a valid mobile number.' });
-                isValid = false;
-            }
-        });
-
-        return { isValid, errors };
-    }
-
-    function validateField(input) {
-        const value = input.value.trim();
-        const fieldId = input.id;
-
-        if (containsBotScripts(value)) {
-            displayError(input, 'Input should not contain scripts.');
-        } else {
-            clearError(input);
-            if (fieldId === 'message' && value.length < 10) {
-                displayError(input, 'Message must be at least 10 characters long.');
-            } else if (fieldId === 'email' && !validateEmail(value)) {
-                displayError(input, 'Please enter a valid email address.');
-            } else if (fieldId === 'mobile' && !validateMobile(value)) {
-                displayError(input, 'Please enter a valid mobile number.');
-            }
-        }
-    }
-
-    function displayError(input, message) {
-        clearError(input); // Remove previous error if any
-        const errorMsg = document.createElement('div');
-        errorMsg.className = 'error-message text-danger';
-        errorMsg.textContent = message;
-        input.parentNode.appendChild(errorMsg);
-    }
-
-    function clearError(input) {
-        const errorMsg = input.parentNode.querySelector('.error-message');
-        if (errorMsg) {
-            errorMsg.remove();
-        }
-    }
-
-    function displayErrors(form, errors) {
-        errors.forEach(error => {
-            const inputField = form.querySelector(`#${error.field}`);
-            displayError(inputField, error.message);
-        });
-    }
-
-    function validateEmail(email) {
-        const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
-        return re.test(String(email).toLowerCase());
-    }
-
-    function validateMobile(mobile) {
-        const re = /^\+?[0-9\s()-]{7,15}$/; 
-        return re.test(String(mobile));
-    }
-
-    function containsBotScripts(input) {
-        const botScripts = /<script.*?>.*?<\/script>|<\/?[^>]+/i; 
-        return botScripts.test(input);
-    }
-
-    // Handle newsletter signup
-    const newsletterInput = document.querySelector('.newsletter-input');
-    const newsletterButton = document.querySelector('.newsletter-button');
+document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+    // Prevent form submission if validation fails
+    event.preventDefault();
     
-    if (newsletterButton) {
-        newsletterButton.addEventListener('click', function () {
-            handleNewsletterSignup(newsletterInput);
-        });
+    // Get form data
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const service = document.getElementById("service").value;
+    const date = document.getElementById("date").value.trim();
+    const time = document.getElementById("time").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    // Clear previous error messages
+    clearErrors();
+
+    // Perform validation
+    let isValid = true;
+
+    // Name Validation (Alphanumeric and space, no special characters allowed)
+    if (!name || !/^[A-Za-z\s]+$/.test(name)) {
+        showError("name", "Please enter a valid name (letters and spaces only).");
+        isValid = false;
     }
 
-    function handleNewsletterSignup(input) {
-        const email = input.value.trim();
-        if (validateEmail(email)) {
-            alert('Thank you for signing up for our newsletter!'); 
-            input.value = ''; // Clear input field
-        } else {
-            alert('Please enter a valid email address.');
-        }
+    // Email Validation (standard email format)
+    if (!email || !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+        showError("email", "Please enter a valid email address.");
+        isValid = false;
+    }
+
+    // Mobile Validation (only digits, length of 10-15 digits)
+    if (!mobile || !/^\d{10,15}$/.test(mobile)) {
+        showError("mobile", "Please enter a valid mobile number (10-15 digits).");
+        isValid = false;
+    }
+
+    // Service Validation (ensure service is selected)
+    if (!service) {
+        showError("service", "Please choose a service.");
+        isValid = false;
+    }
+
+    // Date Validation (non-empty, could be customized for a specific date format if needed)
+    if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        showError("date", "Please choose a valid date (format: YYYY-MM-DD).");
+        isValid = false;
+    }
+
+    // Time Validation (non-empty, could be customized for a specific time format)
+    if (!time || !/^\d{2}:\d{2}$/.test(time)) {
+        showError("time", "Please choose a valid time (format: HH:MM).");
+        isValid = false;
+    }
+
+    // Message Validation (non-empty, max 500 characters)
+    if (!message || message.length > 500) {
+        showError("message", "Please enter a valid message (max 500 characters).");
+        isValid = false;
+    }
+
+    // If all fields are valid, submit the form
+    if (isValid) {
+        // You can submit the form using AJAX or a normal form submit
+        this.submit();  // For normal form submission
+        // or use AJAX for submission (example below)
+        /*
+        const formData = new FormData(this);
+        fetch('/handleappointment', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert("Appointment booked successfully!");
+        })
+        .catch(error => {
+            alert("There was an error with the appointment booking.");
+        });
+        */
     }
 });
+
+// Function to clear previous error messages
+function clearErrors() {
+    const errorMessages = document.querySelectorAll(".error-message");
+    errorMessages.forEach(message => message.remove());
+}
+
+// Function to show error messages
+function showError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    const errorMessage = document.createElement("div");
+    errorMessage.className = "error-message";
+    errorMessage.style.color = "red";
+    errorMessage.innerText = message;
+
+    // Insert error message after the field
+    field.parentElement.appendChild(errorMessage);
+}
+
+// Helper function to sanitize user inputs (to prevent XSS)
+function sanitizeInput(input) {
+    const element = document.createElement('div');
+    element.innerText = input;
+    return element.innerHTML;  // Return sanitized input
+}

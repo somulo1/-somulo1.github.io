@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-   <link href="img/favicon.ico" rel="icon"> 
+   <link href="img/cybersec.png" rel="icon"> 
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,13 +33,15 @@
 </head>
 
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+     <!-- ===================screen loader goes here========================== -->
+   
+     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div>
     </div>
-    <!-- Spinner End -->
+    <!-- =======================Spinner End ===================================-->
+
 
 
     <!-- Topbar Start -->
@@ -74,7 +76,7 @@
 
 
       <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+      <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h1 class="m-0 text-primary"><i ></i>Omulo Samuel Okoth</h1>
         </a>
@@ -83,25 +85,27 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="mywork.html" class="nav-item nav-link">My Work</a>
+                <a href="/index" class="nav-item nav-link active">Home</a>
+                <a href="/about" class="nav-item nav-link">About</a>
+                <a href="/mywork" class="nav-item nav-link">mywork</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">other Pages</a>
                     <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                        <a href="award.html" class="dropdown-item">Awards</a>
-                        <a href="experience.html" class="dropdown-item">Experience</a>
-                        <a href="skills.html" class="dropdown-item">Skills</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="blogs.html" class="dropdown-item">Blogs</a>
+                        <a href="/award" class="dropdown-item">Awards</a>
+                        <a href="/experience" class="dropdown-item">Experience</a>
+                        <a href="/skills" class="dropdown-item">Skills</a>
+                        <a href="/testimonial" class="dropdown-item">Testimonial</a>
+                        <a href="/blogs" class="dropdown-item">Blogs</a>
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                <a href="/contact" class="nav-item nav-link">Contact</a>
             </div>
-            <a href="contact.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Hire Me<i class="fa fa-arrow-right ms-3"></i></a>
+            <a href="/contact" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Appointment<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
+
+
 
 
     <!-- Header Start -->
@@ -170,15 +174,16 @@
                     <span class="greeting-effect">Hi ,<br> welcome to my portfolio!</span>
                 </h5><br>
                 <h4>My name is <b>Samuel Okoth Omulo</b></h> 
-                <div class="skill-text-container">
-                    <h5 class="mt-4">I am:</h5>
-                    <span class="skill-text">
-                        
-                        <div class="skills-animation">
-                            <span class="skill-text"></span>
-                        </div>
-                    </span>
-                </div>
+                    <div class="skill-text-container">
+                        <h5 class="mt-4">I am:</h5>
+                        <span class="skill-text" defer >
+                            
+                            <div class="skills-animation">
+                                <span class="skill-text"></span>
+                            </div>
+                        </span>
+                    </div>
+                
                 <br>
                
                     
@@ -188,7 +193,7 @@
                     <p><i class="far fa-check-circle text-primary me-3"></i>Digital forensics</p>
                     <p><i class="far fa-check-circle text-primary me-3"></i>Network Security Expert</p>
                     <p><i class="far fa-check-circle text-primary me-3"></i>Full full-stack Development</p> -->
-                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="about.html">Read More</a>
+                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="/about">Read More</a>
                     </div>
             </div>
         </div>
@@ -380,7 +385,7 @@
         </div>
     </div> -->
     <!-- Appointment End -->
-   <!-- Footer Start -->
+    <!-- Footer Start -->
   <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
         <div class="row g-5">
@@ -461,7 +466,6 @@
     </div>
 </div>
 <!-- Footer End -->
-
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
