@@ -329,12 +329,12 @@ func handleAppointment(w http.ResponseWriter, r *http.Request) {
 	message := p.Sanitize(r.FormValue("message"))
 
 	// Define regex patterns for validation
-	nameRegex := `^[a-zA-Z\s]+$`                                      // Only letters and spaces
-	emailRegex := `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`  // Email pattern
-	mobileRegex := `^\d{10}$`                                         // Only digits, length 10-15 digits
-	dateRegex := `^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$` // Date in dd/mm/yyyy format
-	timeRegex := `^(0[1-9]|1[0-2]):([0-5][0-9])\s?(AM|PM|am|pm)?$`    // Time in HH:MM format
-	messageRegex := `^.{10,500}$`                                     // Non-empty, max 500 characters
+	nameRegex := `^[a-zA-Z\s]+$`                                                                                // Only letters and spaces
+	emailRegex := `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`                                            // Email pattern
+	mobileRegex := `^\d{10}$`                                                                                   // Only digits, length 10-15 digits
+	dateRegex := `^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$`                                           // Date in dd/mm/yyyy format
+	timeRegex := `^(?:([01]?[0-9]|2[0-3]):([0-5][0-9])(?:\s?(AM|PM|am|pm))?|([01]?[0-9]|2[0-3]):([0-5][0-9]))$` // Time in HH:MM format
+	messageRegex := `^.{10,500}$`                                                                               // Non-empty, max 500 characters
 
 	// Validate inputs using regex
 	if !regexp.MustCompile(nameRegex).MatchString(name) {
