@@ -65,6 +65,7 @@ func RegisterRoutes(mux *http.ServeMux) {
 
 	// Register the home page handler and email handler
 	mux.HandleFunc("/", HomeHandler)
+	mux.HandleFunc("/resume", handleresume)
 	mux.HandleFunc("/send-email", handleEmailSend)
 	mux.HandleFunc("/handleappointment", handleAppointment)
 	mux.HandleFunc("/contact", handleContact)
@@ -84,6 +85,19 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
+}
+
+// Contact page handler
+func handleresume(w http.ResponseWriter, r *http.Request) {
+	// Path to the PDF file
+	filePath := "resume/SAMUELOKOTHOMULORESUME.pdf"
+
+	// Set the appropriate headers for PDF
+	w.Header().Set("Content-Type", "application/pdf")
+	w.Header().Set("Content-Disposition", "inline; filename=\"SAMUELOKOTHOMULORESUME.pdf\"")
+
+	// Serve the PDF file
+	http.ServeFile(w, r, filePath)
 }
 
 // Contact page handler
