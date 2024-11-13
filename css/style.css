@@ -467,7 +467,7 @@
     color: var(--light) !important;
 }
 
-.testimonial-cargo mod tidyousel .owl-item.center .testimonial-item img {
+.testimonial-carousel .owl-item.center .testimonial-item img {
     background: var(--primary) !important;
 } 
 
@@ -501,6 +501,7 @@
 .testimonial-carousel .owl-nav .owl-next:hover {
     color: var(--dark);
 }
+
 
 
 /*** ===========================================Footer=============================================== ***/
