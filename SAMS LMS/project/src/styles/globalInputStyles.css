@@ -1,0 +1,162 @@
+/* Input Base Styles */
+.input-base {
+    @apply bg-white 
+           border-2
+           border-gray-300 
+           text-black
+           font-medium
+           text-base 
+           rounded-lg 
+           focus:ring-2 
+           focus:ring-blue-600 
+           focus:border-blue-600 
+           block 
+           w-full 
+           p-2.5 
+           transition-all 
+           shadow-sm
+           duration-200;
+}
+
+/* Dark mode support */
+.dark .input-base {
+    @apply bg-gray-800 
+           border-gray-600 
+           text-white
+           font-medium
+           placeholder-gray-300;
+}
+
+/* Search Input Styles */
+.search-input {
+    @apply input-base
+           pl-10
+           bg-white
+           text-black; /* Space for search icon */
+}
+
+/* Textarea Styles */
+.textarea-base {
+    @apply input-base
+           min-h-[100px]
+           resize-y
+           bg-white
+           text-black;
+}
+
+/* Select Styles */
+.select-base {
+    @apply input-base
+           appearance-none
+           pr-8
+           bg-white
+           text-black; /* Space for dropdown icon */
+}
+
+/* Date Input Styles */
+.date-input {
+    @apply input-base
+           bg-white
+           text-black;
+}
+
+/* Number Input Styles */
+.number-input {
+    @apply input-base
+           bg-white
+           text-black;
+}
+
+/* Disabled State */
+.input-base:disabled {
+    @apply bg-gray-100 
+           cursor-not-allowed 
+           opacity-75
+           text-gray-700;
+}
+
+/* Error State */
+.input-error {
+    @apply border-red-500 
+           focus:ring-red-500 
+           focus:border-red-500
+           bg-red-50
+           text-black;
+}
+
+/* Success State */
+.input-success {
+    @apply border-green-500 
+           focus:ring-green-500 
+           focus:border-green-500
+           bg-green-50
+           text-black;
+}
+
+/* Input Group Styles */
+.input-group {
+    @apply relative flex items-center;
+}
+
+.input-group-text {
+    @apply absolute 
+           left-3 
+           text-gray-700;
+}
+
+/* Placeholder Styles */
+.input-base::placeholder {
+    @apply text-gray-500
+           font-normal;
+}
+
+/* Focus Ring Styles */
+.input-base:focus {
+    @apply outline-none 
+           ring-opacity-50
+           bg-white
+           text-black;
+}
+
+/* Hover Effects */
+.input-base:hover:not(:disabled) {
+    @apply border-gray-400
+           bg-white
+           text-black;
+}
+
+/* Input Sizes */
+.input-sm {
+    @apply py-1 px-2 text-sm;
+}
+
+.input-lg {
+    @apply py-3 px-4 text-lg;
+}
+
+/* Active/Focused Input */
+.input-base:focus-within {
+    @apply bg-white
+           text-black
+           border-blue-600;
+}
+
+/* Input with value */
+.input-base:not(:placeholder-shown) {
+    @apply text-black
+           bg-white;
+}
+
+/* Dark mode overrides for better visibility */
+.dark .input-base:focus,
+.dark .input-base:hover:not(:disabled),
+.dark .input-base:focus-within {
+    @apply bg-gray-800
+           text-white
+           border-blue-400;
+}
+
+.dark .input-base:not(:placeholder-shown) {
+    @apply text-white
+           bg-gray-800;
+}

@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './styles/globalInputStyles.css';
+
+@layer components {
+  .input-base {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+  }
+  
+  .search-input {
+    @apply pl-10;
+  }
+  
+  .textarea-base {
+    @apply resize-y min-h-[100px];
+  }
+  
+  .select-base {
+    @apply appearance-none pr-8;
+  }
+
+  .date-input {
+    @apply appearance-none px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+  }
+
+  .number-input {
+    @apply appearance-none px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+  }
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+  
+  body {
+    @apply m-0 p-0 min-h-screen bg-gray-100 text-gray-900;
+  }
+
+  /* Base styles for better input visibility */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  textarea,
+  select {
+      @apply input-base;
+  }
+
+  /* Ensure text inputs always have visible text */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"] {
+      @apply text-black bg-white;
+  }
+
+  /* Search inputs */
+  [type="search"] {
+      @apply search-input;
+  }
+
+  /* Textarea */
+  textarea {
+      @apply textarea-base;
+  }
+
+  /* Select */
+  select {
+      @apply select-base text-black bg-white;
+  }
+
+  /* Date inputs */
+  [type="date"] {
+      @apply date-input text-black;
+  }
+
+  /* Number inputs */
+  [type="number"] {
+      @apply number-input text-black;
+  }
+
+  /* Focus styles for all interactive elements */
+  :focus {
+      @apply outline-none ring-2 ring-blue-600 ring-opacity-50;
+  }
+
+  /* Improved contrast for placeholder text */
+  ::placeholder {
+      @apply text-gray-500 font-normal;
+  }
+
+  /* Improved contrast for disabled elements */
+  :disabled {
+      @apply opacity-70 cursor-not-allowed bg-gray-100 text-gray-700;
+  }
+
+  /* Dark mode overrides */
+  .dark input[type="text"],
+  .dark input[type="email"],
+  .dark input[type="password"],
+  .dark input[type="search"],
+  .dark textarea,
+  .dark select {
+      @apply bg-gray-800 text-white border-gray-600;
+  }
+}
+
+@layer utilities {
+  .animate-spin-reverse {
+    animation: spin-reverse 1s linear infinite;
+  }
+  
+  @keyframes spin-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+/* Ensure styles are loaded before rendering */
+:root {
+  --loading-complete: true;
+}
+
+/* Prevent FOUC */
+.invisible-until-loaded {
+  visibility: hidden;
+}
+
+html.styles-loaded .invisible-until-loaded {
+  visibility: visible;
+}
